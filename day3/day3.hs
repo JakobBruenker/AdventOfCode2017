@@ -33,8 +33,9 @@ i n = n - ri n
 fi :: (Integral a, Num b) => a -> b
 fi = fromIntegral
 
--- this is asymptotically faster than the usual solution, not sure by how much
--- though (556 is the largest argument for which the result is > maxint)
+-- I initially thought a binary search like this would be faster than the usual
+-- solution, which is why my solution is so convoluted, but after completing
+-- it, I realized that it's actually slower :/
 two :: Int -> (Int, Int)
 two = go 1 2
   where go l h n | msc h < n  = go l (min (2 * h) 556) n
